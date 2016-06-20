@@ -1,20 +1,20 @@
 {
-    "name": "terminal",
-    "version": "1.0.0",
-    "description": "Terminal inside the IDE",
-    "main": "./lib/index.js",
-    "browser": "./src/index.js",
-    "engines": {
-        "codebox": ">=1.0.0-alpha"
-    },
-    "dependencies": {
-        "q": "1.0.1",
-        "lodash": "2.4.1",
-        "screen-buffer": "~0.4.0",
-        "shux": "github:tianmaying/shux",
-        "sh.js": "1.1.1"
-    },
-    "packageDependencies": {
-        "tabs": "CodeboxIDE/package-tabs"
-    }
+  "name": "terminal",
+  "version": "1.0.0",
+  "description": "Terminal inside the IDE",
+  "main": "./lib/index.js",
+  "browser": "./src/index.js",
+  "engines": {
+    "codebox": ">=1.0.0-alpha"
+  },
+  "dependencies": {
+    "lodash": "^4.13.1",
+    "q": "^1.4.1",
+    "screen-buffer": "~0.4.0",
+    "sh.js": "1.1.1",
+    "shux": "github:tianmaying/shux"
+  },
+  "packageDependencies": {
+    "tabs": "CodeboxIDE/package-tabs"
+  }
 }
