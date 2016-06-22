@@ -33,7 +33,8 @@ var Shell = Class.extend({
         });
 
         this.listenTo(this.socket, "do:output", function(data) {
-            this.trigger("data", decodeURIComponent(window.atob(data)));
+            // this.trigger("data", decodeURIComponent(window.atob(data)));
+            this.trigger("data", data);
         });
 
         this.listenTo(this.socket, "open", function() {
