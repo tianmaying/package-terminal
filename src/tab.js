@@ -98,6 +98,9 @@ var Tab = codebox.tabs.Panel.extend({
         setTimeout(function() {
             that.focus();
         }, 300);
+
+        this.term.sizeToFit();
+        this.term.focus();
         return this;
     },
 
