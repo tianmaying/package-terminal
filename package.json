@@ -11,7 +11,7 @@
     "lodash": "^4.13.1",
     "q": "^1.4.1",
     "screen-buffer": "~0.4.0",
-    "sh.js": "1.1.1",
+    "sh.js": "github:luoruici/sh.js",
     "shux": "github:tianmaying/shux"
   },
   "packageDependencies": {
