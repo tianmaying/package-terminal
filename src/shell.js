@@ -1,7 +1,7 @@
 var _ = codebox.require("hr.utils");
 var Class = codebox.require("hr.class");
 var hash = codebox.require("utils/hash");
-var io = require("socket.io-client");
+// var io = require("socket.io-client");
 
 var logging = codebox.require("hr.logger")("terminal");
 
