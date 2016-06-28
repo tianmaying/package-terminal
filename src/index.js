@@ -1,10 +1,7 @@
 
 require("./stylesheets/main.less");
-console.log('terminal starting');
 
 var TerminalTab = require("./tab");
-
-console.log('terminal tab started');
 
 var commands = codebox.require("core/commands");
 var rpc = codebox.require("core/rpc");
