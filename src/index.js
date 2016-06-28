@@ -1,6 +1,6 @@
-console.log('terminal starting');
 
 require("./stylesheets/main.less");
+console.log('terminal starting');
 
 var TerminalTab = require("./tab");
 
