@@ -1,46 +1,44 @@
 var _ = codebox.require("hr.utils");
 var Class = codebox.require("hr.class");
 var hash = codebox.require("utils/hash");
-var Socket = require("socket.io-client");
+var io = require("socket.io-client");
 
 var logging = codebox.require("hr.logger")("terminal");
 
 var Shell = Class.extend({
     defaults: {},
 
-    initialize: function() {
+    initialize: function () {
         Shell.__super__.initialize.apply(this, arguments);
         this.shellId = this.options.shellId || _.uniqueId("term");
-
         return this;
     },
 
     /*
      *  Connect to the terminal
      */
-    connect: function() {
+    connect: function () {
         var that = this;
         if (this.socket != null) {
             return this;
         }
 
-        this.socket = Socket.connect('http://127.0.0.1:5000/socket.io/');
-
-        this.listenTo(this.socket, 'connect', function() {
-            console.log('shell id = ', that.shellId);
-            that.trigger('connect');
-            that.socket.emit("term.open", {
-                id: that.shellId,
-                cols: 80,
-                rows: 24
+        this.socket = io.connect('http://127.0.0.1:5000/socket.io/')
+            .on('connect', function () {
+                console.log('shell id = ', that.shellId);
+                that.trigger('connect');
+                that.socket.emit("term.open", {
+                    id: that.shellId,
+                    cols: 80,
+                    rows: 24
+                });
             });
-        });
 
-        this.socket.on('term.output', function(data) {
+        this.socket.on('term.output', function (data) {
             that.trigger(data.output);
         });
 
-        this.socket.on('disconnect', function() {
+        this.socket.on('disconnect', function () {
             that.trigger('disconnect');
         });
 
@@ -71,7 +69,7 @@ var Shell = Class.extend({
     /*
      *  Disconnect
      */
-    disconnect: function() {
+    disconnect: function () {
         if (this.socket != null) {
             this.socket.disconnect();
         }
@@ -81,7 +79,7 @@ var Shell = Class.extend({
     /*
      *  Write content
      */
-    write: function(buf) {
+    write: function (buf) {
         if (this.socket != null) {
             // this.socket.do("input", hash.btoa(buf));
             this.socket.emit("term:input", {
@@ -95,7 +93,7 @@ var Shell = Class.extend({
     /*
      *  Resize the shell
      */
-    resize: function(w, h) {
+    resize: function (w, h) {
         if (this.socket != null) {
             this.socket.emit("term.resize", {
                 "id": this.shellId,
