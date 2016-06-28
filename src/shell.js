@@ -28,6 +28,7 @@ var Shell = Class.extend({
 
         this.socket.on('connect', function() {
             that.trigger('connect');
+            console.log('shell id = ', that.shellId);
             that.socket.emit("term.open", {
                 id: that.shellId,
                 cols: 80,
