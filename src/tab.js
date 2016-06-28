@@ -4,6 +4,7 @@ var $ = codebox.require("jquery");
 var _ = codebox.require("hr.utils");
 var keyboard = codebox.require("utils/keyboard");
 
+console.log('terminal tab starting');
 
 var Tab = codebox.tabs.Panel.extend({
     className: "component-terminal",
@@ -19,17 +20,21 @@ var Tab = codebox.tabs.Panel.extend({
     },
 
     initialize: function() {
+        console.log('initialize');
         var that = this;
         Tab.__super__.initialize.apply(this, arguments);
+        console.log('initialize1');
 
         this.connected = false;
         this.setTabState("loading", true);
 
+        console.log('initialize2');
         // Init rendering
         this.term_el = $("<div>", {
             'class': "terminal-body"
         }).appendTo(this.$el).get(0);
 
+        console.log('initialize3');
         // New terminal
         this.term = new Terminal({
             cols: 80,

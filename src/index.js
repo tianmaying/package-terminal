@@ -3,11 +3,12 @@ console.log('terminal starting');
 require("./stylesheets/main.less");
 
 var TerminalTab = require("./tab");
+
+console.log('terminal tab started');
+
 var commands = codebox.require("core/commands");
 var rpc = codebox.require("core/rpc");
 var dialogs = codebox.require("utils/dialogs");
-
-console.log('codebox = ', codebox);
 
 commands.register({
     id: "terminal.open",
