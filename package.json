@@ -12,7 +12,8 @@
     "q": "^1.4.1",
     "screen-buffer": "~0.4.0",
     "sh.js": "github:luoruici/sh.js",
-    "shux": "github:tianmaying/shux"
+    "shux": "github:luoruici/shux#0.2.4",
+    "socket.io-client": "^1.4.8"
   },
   "packageDependencies": {
     "tabs": "CodeboxIDE/package-tabs"
