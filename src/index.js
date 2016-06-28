@@ -21,22 +21,22 @@ commands.register({
     }
 });
 
-commands.register({
-    id: "terminal.open.existing",
-    title: "Terminal: Open Existing",
-    icon: "versions",
-    shortcuts: [
-        "alt+shift+t"
-    ],
-    run: function(args, context) {
-        return rpc.execute("terminal/list")
-        .then(function(terminals) {
-            return dialogs.list(terminals)
-        })
-        .then(function(terminal) {
-            return commands.run("terminal.open", {
-                shellId: terminal.get("value")
-            });
-        });
-    }
-});
+// commands.register({
+//     id: "terminal.open.existing",
+//     title: "Terminal: Open Existing",
+//     icon: "versions",
+//     shortcuts: [
+//         "alt+shift+t"
+//     ],
+//     run: function(args, context) {
+//         return rpc.execute("terminal/list")
+//         .then(function(terminals) {
+//             return dialogs.list(terminals)
+//         })
+//         .then(function(terminal) {
+//             return commands.run("terminal.open", {
+//                 shellId: terminal.get("value")
+//             });
+//         });
+//     }
+// });
