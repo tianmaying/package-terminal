@@ -11,8 +11,8 @@
     "lodash": "^4.13.1",
     "q": "^1.4.1",
     "screen-buffer": "~0.4.0",
-    "sh.js": "github:luoruici/sh.js",
-    "shux": "github:luoruici/shux#0.2.4",
+    "sh.js": "luoruici/sh.js",
+    "shux": "luoruici/shux#v0.2.4",
     "socket.io-client": "^1.4.8"
   },
   "packageDependencies": {
