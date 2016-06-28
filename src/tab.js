@@ -25,6 +25,8 @@ var Tab = codebox.tabs.Panel.extend({
         this.connected = false;
         this.setTabState("loading", true);
 
+        console.log(11111);
+
         // Init rendering
         this.term_el = $("<div>", {
             'class': "terminal-body"
@@ -38,15 +40,21 @@ var Tab = codebox.tabs.Panel.extend({
         });
         this.term.open(this.term_el);
 
+        console.log(22222);
+
         this.interval = setInterval(_.bind(this.resize, this), 2000);
 
         // Init codebox stream
         this.sessionId = this.options.shellId || _.uniqueId("term");
 
+        console.log(3333);
+
         this.shell = new Shell({
             'shellId': this.options.shellId ? this.sessionId : this.sessionId+"-"+(new Date()).getSeconds(),
             'cwd': this.options.cwd
         });
+
+        console.log(44444);
 
         this.on("tab:close", function() {
             clearInterval(this.interval);
