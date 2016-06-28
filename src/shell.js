@@ -24,7 +24,7 @@ var Shell = Class.extend({
             return this;
         }
 
-        this.socket = Socket.connect();
+        this.socket = Socket.connect('http://127.0.0.1:5000/socket.io/');
 
         this.socket.on('connect', function() {
             that.trigger('connect');
