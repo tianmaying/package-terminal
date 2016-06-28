@@ -23,7 +23,7 @@ var Shell = Class.extend({
             return this;
         }
 
-        this.socket = io.connect('http://127.0.0.1:5000/socket.io/')
+        this.socket = io.connect()
             .on('connect', function () {
                 console.log('shell id = ', that.shellId);
                 that.trigger('connect');
