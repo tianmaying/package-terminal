@@ -5,7 +5,7 @@ var io = require("socket.io-client");
 
 var logging = codebox.require("hr.logger")("terminal");
 
-var host = 'http://ide-ws.tianmaying.com:32774';
+var host = 'http://ide-ws.tianmaying.com';
 var workspaceId = _.chain(window.location.pathname.split('/'))
     .compact()
     .last()
@@ -41,6 +41,9 @@ var Shell = Class.extend({
             });
 
         this.socket.on('term.output', function (data) {
+            console.log('term.output data = ', data);
+            console.log('term.output data ascii = ', data.output.charCodeAt(0));
+
             that.trigger('data', data.output);
         });
 
