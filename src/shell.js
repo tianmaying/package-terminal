@@ -28,10 +28,11 @@ var Shell = Class.extend({
         if (this.socket != null) {
             return this;
         }
-        var url = host + '/tty/' + workspaceId;
-        console.log('socket.io url = ', url);
-        this.socket = io.connect(url)
-            .on('connect', function () {
+        this.socket = io.connect(host, {
+            reconnection: true,
+            path: '/tty/' + workspaceId,
+            transports: ['websocket']
+        }).on('connect', function () {
                 that.trigger('connect');
                 that.socket.emit("term.open", {
                     id: that.shellId,
