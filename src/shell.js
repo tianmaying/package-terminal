@@ -7,9 +7,9 @@ var logging = codebox.require("hr.logger")("terminal");
 
 var host = 'http://ide-ws.tianmaying.com';
 var workspaceId = _.chain(window.location.pathname.split('/'))
-    .filter(function(p) {
-        return !!p;
-    }).last().value();
+    .compact()
+    .last()
+    .value();
 
 var Shell = Class.extend({
     defaults: {},
@@ -29,6 +29,7 @@ var Shell = Class.extend({
             return this;
         }
         var url = host + '/tty/' + workspaceId;
+        console.log('socket.io url = ', url);
         this.socket = io.connect(url)
             .on('connect', function () {
                 that.trigger('connect');
