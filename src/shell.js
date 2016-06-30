@@ -28,7 +28,7 @@ var Shell = Class.extend({
         if (this.socket != null) {
             return this;
         }
-        var url = host + '/socket.io/tty/' + workspaceId;
+        var url = host + '/tty/' + workspaceId;
         this.socket = io.connect(url)
             .on('connect', function () {
                 that.trigger('connect');
