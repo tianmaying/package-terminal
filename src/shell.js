@@ -88,7 +88,7 @@ var Shell = Class.extend({
     write: function (buf) {
         if (this.socket != null) {
             // this.socket.do("input", hash.btoa(buf));
-            this.socket.emit("term:input", {
+            this.socket.emit("term.input", {
                 id: this.shellId,
                 input: buf
             });
