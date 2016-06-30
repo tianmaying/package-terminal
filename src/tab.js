@@ -1,5 +1,4 @@
 var Shell = require("./shell");
-var Terminal = require("sh.js/src/index.js");
 var $ = codebox.require("jquery");
 var _ = codebox.require("hr.utils");
 var keyboard = codebox.require("utils/keyboard");
@@ -37,7 +36,7 @@ var Tab = codebox.tabs.Panel.extend({
         });
         this.term.open(this.term_el);
 
-        this.interval = setInterval(_.bind(this.resize, this), 2000);
+        // this.interval = setInterval(_.bind(this.resize, this), 2000);
 
         // Init codebox stream
         this.sessionId = this.options.shellId || _.uniqueId("term");
@@ -98,7 +97,7 @@ var Tab = codebox.tabs.Panel.extend({
             that.focus();
         }, 300);
 
-        // this.term.sizeToFit();
+        this.term.sizeToFit();
         this.term.focus();
         return this;
     },
