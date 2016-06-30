@@ -41,7 +41,7 @@ var Shell = Class.extend({
             });
 
         this.socket.on('term.output', function (data) {
-            that.trigger(data.output);
+            that.trigger('data', data.output);
         });
 
         this.socket.on('disconnect', function () {
