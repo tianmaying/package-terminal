@@ -1,9 +1,15 @@
 var _ = codebox.require("hr.utils");
 var Class = codebox.require("hr.class");
 var hash = codebox.require("utils/hash");
-// var io = require("socket.io-client");
+var io = require("socket.io-client");
 
 var logging = codebox.require("hr.logger")("terminal");
+
+var host = 'http://ide-ws.tianmaying.com';
+var workspaceId = _.chain(window.location.pathname.split('/'))
+    .filter(function(p) {
+        return !!p;
+    }).last().value();
 
 var Shell = Class.extend({
     defaults: {},
@@ -22,10 +28,9 @@ var Shell = Class.extend({
         if (this.socket != null) {
             return this;
         }
-
-        this.socket = io.connect()
+        var url = host + '/socket.io/tty/' + workspaceId;
+        this.socket = io.connect(url)
             .on('connect', function () {
-                console.log('shell id = ', that.shellId);
                 that.trigger('connect');
                 that.socket.emit("term.open", {
                     id: that.shellId,
