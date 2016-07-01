@@ -30,7 +30,7 @@ var Shell = Class.extend({
         }
         this.socket = io.connect(host, {
             reconnection: true,
-            path: '/tty/' + workspaceId,
+            path: '/socket.io/' + workspaceId,
             transports: ['websocket']
         }).on('connect', function () {
                 that.trigger('connect');
