@@ -71,7 +71,6 @@ var Tab = codebox.tabs.Panel.extend({
         });
 
         this.shell.on('data', function(chunk) {
-            console.log('term.output', chunk.charCodeAt(0));
             that.write(chunk);
         });
 
@@ -87,7 +86,6 @@ var Tab = codebox.tabs.Panel.extend({
 
         // Connect term
         this.term.on('data', function(data) {
-            console.log('term.input', data.charCodeAt(0));
             that.shell.write(data);
         });
         this.term.on("resize", function(w, h) {
@@ -97,11 +95,10 @@ var Tab = codebox.tabs.Panel.extend({
         this.shell.connect();
 
         setTimeout(function() {
-            that.focus();
+            that.term.sizeToFit();
+            that.term.focus();
         }, 300);
 
-        this.term.sizeToFit();
-        this.term.focus();
         return this;
     },
 

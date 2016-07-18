@@ -42,9 +42,6 @@ var Shell = Class.extend({
             });
 
         this.socket.on('term.output', function (data) {
-            console.log('term.output data = ', data);
-            console.log('term.output data ascii = ', data.output.charCodeAt(0));
-
             that.trigger('data', data.output);
         });
 
