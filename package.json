@@ -16,6 +16,6 @@
     "socket.io-client": "^1.4.8"
   },
   "packageDependencies": {
-    "tabs": "CodeboxIDE/package-tabs"
+    "tabs": "tianmaying/package-tabs"
   }
 }
