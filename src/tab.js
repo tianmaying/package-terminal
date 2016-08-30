@@ -62,7 +62,7 @@ var Tab = codebox.tabs.Panel.extend({
             that.resize();
         }, this);
 
-        this.setTabTitle("Terminal - "+this.sessionId);
+        this.setTabTitle("终端 - "+this.sessionId);
 
 
         this.shell.once('data', function() {
