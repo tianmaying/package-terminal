@@ -7,6 +7,26 @@ var commands = codebox.require("core/commands");
 var rpc = codebox.require("core/rpc");
 var dialogs = codebox.require("utils/dialogs");
 
+
+var terminalService = {
+    open: function(command) {
+        var term = codebox.tabs.add(TerminalTab, {}, {
+            type: "terminal",
+            title: "Terminal",
+            section: "terminal"
+        });
+        if(command) {
+            term.writeln(command);
+        }
+        return term;
+    }
+};
+
+if(!codebox.services) {
+    codebox.services = {};
+}
+codebox.services['terminalService'] = terminalService;
+
 commands.register({
     id: "terminal.open",
     title: "Terminal: Open",
