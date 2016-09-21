@@ -18,6 +18,7 @@ var Tab = codebox.tabs.Panel.extend({
     },
 
     initialize: function() {
+        console.log(arguments);
         var that = this;
         Tab.__super__.initialize.apply(this, arguments);
 
