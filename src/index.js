@@ -6,6 +6,7 @@ var TerminalTab = require("./tab");
 var commands = codebox.require("core/commands");
 var rpc = codebox.require("core/rpc");
 var dialogs = codebox.require("utils/dialogs");
+var events = codebox.require('core/events');
 
 
 var terminalService = {
@@ -16,7 +17,9 @@ var terminalService = {
             section: "terminal"
         });
         if(command) {
-            term.writeln(command);
+            term.listenTo(events, 'terminal:ready', function() {
+                term.shell.write(command + "\n\r")
+            });
         }
         return term;
     }
