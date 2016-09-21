@@ -6,7 +6,7 @@ var TerminalTab = require("./tab");
 var commands = codebox.require("core/commands");
 var rpc = codebox.require("core/rpc");
 var dialogs = codebox.require("utils/dialogs");
-
+var events = codebox.require('core/events');
 
 var terminalService = {
     open: function(command) {
