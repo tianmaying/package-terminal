@@ -13,13 +13,13 @@ var terminalService = {
         var term = codebox.tabs.add(TerminalTab, {}, {
             type: "terminal",
             title: "Terminal",
-            section: "terminal"
+            section: "terminal",
+            onConnect: function(shell) {
+                if(command) {
+                    shell.write(command + "\r");
+                }
+            }
         });
-        if(command) {
-            term.shell.on("connect", function() {
-                term.shell.write(command + "\r");
-            }, term);
-        }
         return term;
     }
 };

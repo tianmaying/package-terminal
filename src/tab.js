@@ -17,8 +17,9 @@ var Tab = codebox.tabs.Panel.extend({
         'touchstart': "clickTerm"
     },
 
-    initialize: function() {
+    initialize: function(options) {
         console.log(arguments);
+        console.log(options);
         var that = this;
         Tab.__super__.initialize.apply(this, arguments);
 
@@ -78,6 +79,9 @@ var Tab = codebox.tabs.Panel.extend({
         this.shell.on("connect", function() {
             that.connected = true;
             that.trigger("terminal:ready");
+            if(options.onConnect) {
+                options.onConnect(that.shell);
+            }
         }, this);
 
         this.shell.on('disconnect', function() {
