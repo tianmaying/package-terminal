@@ -3,6 +3,7 @@ var Terminal = require("sh.js/build/sh.js");
 var $ = codebox.require("jquery");
 var _ = codebox.require("hr.utils");
 var keyboard = codebox.require("utils/keyboard");
+var events = codebox.require('core/events');
 
 var Tab = codebox.tabs.Panel.extend({
     className: "component-terminal",
@@ -18,8 +19,6 @@ var Tab = codebox.tabs.Panel.extend({
     },
 
     initialize: function(options) {
-        console.log(arguments);
-        console.log(options);
         var that = this;
         Tab.__super__.initialize.apply(this, arguments);
 
@@ -79,9 +78,9 @@ var Tab = codebox.tabs.Panel.extend({
         this.shell.on("connect", function() {
             that.connected = true;
             that.trigger("terminal:ready");
-            if(options.onConnect) {
-                options.onConnect(that.shell);
-            }
+            events.trigger('e:terminal:ready', {
+                shell: that.shell
+            });
         }, this);
 
         this.shell.on('disconnect', function() {
