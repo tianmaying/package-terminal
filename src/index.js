@@ -16,7 +16,7 @@ var terminalService = {
             section: "terminal"
         });
         if(command) {
-            events.on('e:terminal:ready', function(data) {
+            this.listenTo(events, 'e:terminal:ready', function(data) {
                 data.shell.write(command + "\r");
             });
         }
