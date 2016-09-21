@@ -18,7 +18,7 @@ var terminalService = {
         if(command) {
             term.term.on("terminal:ready", function() {
                 term.shell.write(command + "\r");
-            });
+            }, term.term);
         }
         return term;
     }
