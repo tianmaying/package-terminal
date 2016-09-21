@@ -17,6 +17,9 @@ var terminalService = {
         });
         if(command) {
             term.shell.write(command + "\r");
+            term.shell.once("connect", function() {
+                term.shell.write(command + "\r");
+            });
         }
         return term;
     }
