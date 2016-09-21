@@ -16,7 +16,7 @@ var terminalService = {
             section: "terminal"
         });
         if(command) {
-            term.on("terminal:ready", function() {
+            term.term.on("terminal:ready", function() {
                 term.shell.write(command + "\r");
             });
         }
